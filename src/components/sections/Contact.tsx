@@ -7,13 +7,15 @@ import { slideIn } from "../../utils/motion";
 import { config } from "../../constants/config";
 import { Header } from "../atoms/Header";
 
+type FormKeys = keyof typeof config.contact.form;
+
 type FormState = {
-  [key: string]: string;
+  [key in FormKeys]: string;
 };
 
 const INITIAL_STATE: FormState = Object.fromEntries(
   Object.keys(config.contact.form).map((input) => [input, ""])
-);
+) as FormState;
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -47,7 +49,7 @@ const Contact = () => {
 
         <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col gap-8">
           {Object.keys(config.contact.form).map((input) => {
-            const { span, placeholder } = config.contact.form[input];
+            const { span, placeholder } = config.contact.form[input as FormKeys];
             const Component = input === "message" ? "textarea" : "input";
 
             return (
@@ -56,7 +58,7 @@ const Contact = () => {
                 <Component
                   type={input === "email" ? "email" : "text"}
                   name={input}
-                  value={form[input]}
+                  value={form[input as FormKeys]}
                   onChange={handleChange}
                   placeholder={placeholder}
                   className="bg-tertiary placeholder:text-secondary rounded-lg border-none px-6 py-4 font-medium text-white outline-none"
