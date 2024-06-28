@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaWhatsapp, FaTelegramPlane, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { SiFiverr } from "react-icons/si";
 
-const Footer = () => {
+const Footer: React.FC = () => {
     const icons = [
         { href: 'https://wa.link/puy5gd', icon: <FaWhatsapp />, label: 'WhatsApp' },
         { href: 'https://t.me/', icon: <FaTelegramPlane />, label: 'Telegram' },

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef, ChangeEvent, FormEvent } from "react";
 import { motion } from "framer-motion";
 
 import { EarthCanvas } from "../canvas";
@@ -7,21 +7,25 @@ import { slideIn } from "../../utils/motion";
 import { config } from "../../constants/config";
 import { Header } from "../atoms/Header";
 
-const INITIAL_STATE = Object.fromEntries(
+type FormState = {
+  [key: string]: string;
+};
+
+const INITIAL_STATE: FormState = Object.fromEntries(
   Object.keys(config.contact.form).map((input) => [input, ""])
 );
 
 const Contact = () => {
-  const formRef = useRef();
-  const [form, setForm] = useState(INITIAL_STATE);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [form, setForm] = useState<FormState>(INITIAL_STATE);
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
