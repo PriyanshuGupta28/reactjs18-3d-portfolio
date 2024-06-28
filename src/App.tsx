@@ -13,6 +13,7 @@ import {
 } from "./components";
 import { useEffect } from "react";
 import { config } from "./constants/config";
+import Footer from "./components/sections/Footer";
 
 const App = () => {
   useEffect(() => {
@@ -29,7 +30,7 @@ const App = () => {
           <Hero />
         </div>
         <About />
-        <Experience />
+        {/* <Experience /> */}
         <Tech />
         <Works />
         <Feedbacks />
@@ -38,6 +39,9 @@ const App = () => {
           <StarsCanvas />
         </div>
       </div>
+      {/* <div className="flex flex-col min-h-screen"> */}
+      <Footer />
+      {/* </div> */}
     </BrowserRouter>
   );
 };
