@@ -5,27 +5,29 @@ import { SiFiverr } from "react-icons/si";
 
 const Footer: React.FC = () => {
     const icons = [
-        { href: 'https://wa.link/puy5gd', icon: <FaWhatsapp />, label: 'WhatsApp' },
-        { href: 'https://t.me/', icon: <FaTelegramPlane />, label: 'Telegram' },
-        { href: 'https://www.fiverr.com/', icon: <SiFiverr />, label: 'Fiverr' },
-        { href: 'https://www.instagram.com/', icon: <FaInstagram />, label: 'Instagram' },
-        { href: 'https://twitter.com/', icon: <FaTwitter />, label: 'Twitter' },
+        { href: 'https://wa.link/puy5gd', icon: <FaWhatsapp style={{ width: "30px", height: '30px' }} />, label: 'WhatsApp' },
+        { href: 'https://t.me/', icon: <FaTelegramPlane style={{ width: "30px", height: '30px' }} />, label: 'Telegram' },
+        { href: 'https://www.fiverr.com/', icon: <SiFiverr style={{ width: "30px", height: '30px' }} />, label: 'Fiverr' },
+        { href: 'https://www.instagram.com/', icon: <FaInstagram style={{ width: "30px", height: '30px' }} />, label: 'Instagram' },
+        { href: 'https://twitter.com/', icon: <FaTwitter style={{ width: "30px", height: '30px' }} />, label: 'Twitter' },
     ];
 
     return (
-        <footer className="bg-gray-800 text-white py-10 gap-2">
+        <footer className="bg-primary text-white py-10 gap-2">
             <div className="container mx-auto flex items-center justify-center">
                 <motion.div
-                    className="flex space-x-4"
+                    className="flex space-x-8"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
+
                 >
                     {icons.map((icon) => (
                         <motion.a
                             key={icon.label}
                             href={icon.href}
                             target="_blank"
+
                             rel="noopener noreferrer"
                             className="text-white text-2xl"
                             whileHover={{ scale: 1.2 }}
